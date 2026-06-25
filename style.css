@@ -412,6 +412,8 @@ body {
     height: 64px;
     object-fit: contain;
     border-radius: 50%;
+    background: #fff;
+    padding: 6px;
 }
 
 .price-card h3 {
