@@ -417,8 +417,8 @@ body {
 }
 
 .price-card[data-metal="copper"] .price-icon-img {
-    width: 96px;
-    height: 96px;
+    width: 192px;
+    height: 192px;
 }
 
 .price-card h3 {
