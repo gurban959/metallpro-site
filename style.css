@@ -407,6 +407,13 @@ body {
     margin-bottom: 15px;
 }
 
+.price-icon-img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
 .price-card h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
