@@ -416,6 +416,11 @@ body {
     padding: 6px;
 }
 
+.price-card[data-metal="copper"] .price-icon-img {
+    width: 96px;
+    height: 96px;
+}
+
 .price-card h3 {
     font-size: 1.2rem;
     margin-bottom: 10px;
