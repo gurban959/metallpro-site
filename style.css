@@ -1253,6 +1253,13 @@ body {
     transform: scale(1.1);
 }
 
+.floating-btn-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
 .floating-whatsapp {
     background: #25d366;
 }
