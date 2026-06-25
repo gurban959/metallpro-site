@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МеталлПро | Выкуп металлов</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">⚙️</span>
+                <span class="logo-text">МеталлПро</span>
+                <span class="header-status" id="headerStatus">
+                    <span class="status-dot"></span>
+                    <span class="status-text" data-i18n="status_open">Открыто</span>
+                    <span class="status-hours" id="headerStatusHours"></span>
+                </span>
+            </div>
+            <nav class="nav">
+                <a href="#home" data-i18n="nav_home">Главная</a>
+                <a href="#prices" data-i18n="nav_prices">Цены</a>
+                <a href="#services" data-i18n="nav_services">Услуги</a>
+                <a href="#reviews" data-i18n="nav_reviews">Отзывы</a>
+                <a href="#about" data-i18n="nav_about">О нас</a>
+                <a href="#contact" data-i18n="nav_contact">Контакты</a>
+            </nav>
+            <div class="header-controls">
+                <button id="themeToggle" class="icon-btn" title="Toggle theme">🌙</button>
+                <button id="langToggle" class="lang-btn">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <img src="images/crane-magnet.png" class="hero-decor decor-left" alt="">
+        <img src="images/copper-pipes.jpg" class="hero-decor decor-right" alt="">
+        <div class="container">
+            <h1 data-i18n="hero_title">Выкупаем металл по лучшим ценам</h1>
+            <p data-i18n="hero_subtitle">Медь, алюминий, провода, лом и другие цветные металлы</p>
+            <div class="hero-buttons">
+                <button id="openQuoteModal" class="btn btn-primary" data-i18n="hero_btn_quote">[Получить оценку]</button>
+                <button id="openCallModal" class="btn btn-secondary" data-i18n="hero_btn_call">[Позвонить]</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICES -->
+    <section id="prices" class="prices">
+        <img src="images/metal-coils.jpg" class="section-decor decor-left" alt="">
+        <img src="images/cable-bundle.jpg" class="section-decor decor-right" alt="">
+        <div class="container">
+            <div class="prices-header">
+                <div>
+                    <h2 data-i18n="prices_title">Текущие цены</h2>
+                    <p class="section-desc" data-i18n="prices_desc">Обновлено сегодня</p>
+                </div>
+            </div>
+            <div class="prices-grid" id="pricesGrid">
+                <div class="price-card" data-metal="copper">
+                    <div class="price-icon">🔴</div>
+                    <h3 data-i18n="metal_copper">Медь</h3>
+                    <div class="price-value"><span class="price-amount" data-price="copper">385</span> <span class="price-unit">₽/кг</span></div>
+                    <div class="price-status up">↑ +2.1%</div>
+                    <button class="btn btn-small btn-sell" data-metal-name="Медь" data-i18n="btn_sell">Продать</button>
+                </div>
+                <div class="price-card" data-metal="aluminum">
+                    <div class="price-icon">⚪</div>
+                    <h3 data-i18n="metal_aluminum">Алюминий</h3>
+                    <div class="price-value"><span class="price-amount" data-price="aluminum">120</span> <span class="price-unit">₽/кг</span></div>
+                    <div class="price-status down">↓ -0.5%</div>
+                    <button class="btn btn-small btn-sell" data-metal-name="Алюминий" data-i18n="btn_sell">Продать</button>
+                </div>
+                <div class="price-card" data-metal="brass">
+                    <div class="price-icon">🟡</div>
+                    <h3 data-i18n="metal_brass">Латунь</h3>
+                    <div class="price-value"><span class="price-amount" data-price="brass">265</span> <span class="price-unit">₽/кг</span></div>
+                    <div class="price-status stable">→ 0%</div>
+                    <button class="btn btn-small btn-sell" data-metal-name="Латунь" data-i18n="btn_sell">Продать</button>
+                </div>
+                <div class="price-card" data-metal="cable">
+                    <div class="price-icon">🔵</div>
+                    <h3 data-i18n="metal_cable">Провода</h3>
+                    <div class="price-value"><span class="price-amount" data-price="cable">290</span> <span class="price-unit">₽/кг</span></div>
+                    <div class="price-status up">↑ +1.8%</div>
+                    <button class="btn btn-small btn-sell" data-metal-name="Провода" data-i18n="btn_sell">Продать</button>
+                </div>
+                <div class="price-card" data-metal="steel">
+                    <div class="price-icon">⚫</div>
+                    <h3 data-i18n="metal_steel">Сталь</h3>
+                    <div class="price-value"><span class="price-amount" data-price="steel">15</span> <span class="price-unit">₽/кг</span></div>
+                    <div class="price-status stable">→ 0%</div>
+                    <button class="btn btn-small btn-sell" data-metal-name="Сталь" data-i18n="btn_sell">Продать</button>
+                </div>
+                <div class="price-card" data-metal="stainless">
+                    <div class="price-icon">🟤</div>
+                    <h3 data-i18n="metal_stainless">Нержавейка</h3>
+                    <div class="price-value"><span class="price-amount" data-price="stainless">125</span> <span class="price-unit">₽/кг</span></div>
+                    <div class="price-status up">↑ +0.8%</div>
+                    <button class="btn btn-small btn-sell" data-metal-name="Нержавейка" data-i18n="btn_sell">Продать</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL: Edit Prices -->
+    <div id="pricesModal" class="modal-overlay">
+        <div class="modal">
+            <button class="modal-close" id="pricesModalClose">&times;</button>
+            <h2 data-i18n="prices_edit_title">Редактирование цен</h2>
+            <p class="modal-desc" data-i18n="prices_edit_desc">Введите новые цены и нажмите сохранить</p>
+            <form id="pricesForm" class="prices-form">
+                <div class="price-edit-row">
+                    <span>🔴 Медь</span>
+                    <input type="number" step="0.01" id="price_copper" data-price="copper">
+                </div>
+                <div class="price-edit-row">
+                    <span>⚪ Алюминий</span>
+                    <input type="number" step="0.01" id="price_aluminum" data-price="aluminum">
+                </div>
+                <div class="price-edit-row">
+                    <span>🟡 Латунь</span>
+                    <input type="number" step="0.01" id="price_brass" data-price="brass">
+                </div>
+                <div class="price-edit-row">
+                    <span>🔵 Провода</span>
+                    <input type="number" step="0.01" id="price_cable" data-price="cable">
+                </div>
+                <div class="price-edit-row">
+                    <span>⚫ Сталь</span>
+                    <input type="number" step="0.01" id="price_steel" data-price="steel">
+                </div>
+                <div class="price-edit-row">
+                    <span>🟤 Нержавейка</span>
+                    <input type="number" step="0.01" id="price_stainless" data-price="stainless">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+        <img src="images/steel-scrap.jpg" class="section-decor decor-left" alt="">
+        <img src="images/stainless-pipes.jpg" class="section-decor decor-right" alt="">
+        <div class="container">
+            <h2 data-i18n="services_title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3 data-i18n="service_buy_title">Выкуп металла</h3>
+                    <p data-i18n="service_buy_desc">Покупаем все виды цветных и черных металлов по рыночным ценам</p>
+                    <button class="btn btn-outline" data-i18n="btn_details">[Подробнее]</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚚</div>
+                    <h3 data-i18n="service_pickup_title">Вывоз</h3>
+                    <p data-i18n="service_pickup_desc">Бесплатный вывоз металла с вашего объекта</p>
+                    <button class="btn btn-outline" data-i18n="btn_details">[Подробнее]</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3 data-i18n="service_weigh_title">Взвешивание</h3>
+                    <p data-i18n="service_weigh_desc">Точное взвешивание на лицензированных весах</p>
+                    <button class="btn btn-outline" data-i18n="btn_details">[Подробнее]</button>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">♻️</div>
+                    <h3 data-i18n="service_recycle_title">Переработка</h3>
+                    <p data-i18n="service_recycle_desc">Экологичная переработка металлических отходов</p>
+                    <button class="btn btn-outline" data-i18n="btn_details">[Подробнее]</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+        <img src="images/brass-fittings.jpg" class="section-decor decor-left" alt="">
+        <img src="images/metal-shavings.jpg" class="section-decor decor-right" alt="">
+        <div class="container">
+            <h2 data-i18n="about_title">О компании</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p data-i18n="about_p1">Мы работаем на рынке металлолома более 10 лет. Наша компания специализируется на выкупе цветных и черных металлов.</p>
+                    <p data-i18n="about_p2">Мы предлагаем честные цены, быстрое обслуживание и удобные условия сотрудничества.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label" data-i18n="stat_years">Лет на рынке</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label" data-i18n="stat_clients">Клиентов</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label" data-i18n="stat_support">Поддержка</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2 data-i18n="reviews_title">Отзывы клиентов</h2>
+            <p class="section-desc" data-i18n="reviews_desc">Что говорят о нас</p>
+            <div class="reviews-carousel">
+                <button class="carousel-btn carousel-prev" id="reviewsPrev">←</button>
+                <div class="reviews-track-wrapper">
+                    <div class="reviews-track" id="reviewsTrack">
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">Привёз медь и алюминий. Взвесили на точных весах, сразу посчитали и отдали деньги. Никаких лишних вопросов.</p>
+                            <div class="review-author">
+                                <div class="review-avatar">А</div>
+                                <div>
+                                    <div class="review-name">Алексей</div>
+                                    <div class="review-date">15 июня 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">Проверенное место, всегда продаю Салеху. Честные цены, моментальный расчёт. Лучший пункт приёма.</p>
+                            <div class="review-author">
+                                <div class="review-avatar">Д</div>
+                                <div>
+                                    <div class="review-name">Дмитрий</div>
+                                    <div class="review-date">12 июня 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">Сдал 200 кг проводов. Вывезли бесплатно, взвесили, сразу рассчитали на месте. Удобно и быстро.</p>
+                            <div class="review-author">
+                                <div class="review-avatar">Р</div>
+                                <div>
+                                    <div class="review-name">Руслан</div>
+                                    <div class="review-date">10 июня 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">Уже третий раз сдаю Салеху. Всё прозрачно, весы точные, деньги сразу. Рекомендую всем знакомым.</p>
+                            <div class="review-author">
+                                <div class="review-avatar">С</div>
+                                <div>
+                                    <div class="review-name">Сергей</div>
+                                    <div class="review-date">8 июня 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">Регулярно сдаю провода. Всегда адекватные цены, быстрый расчёт. Проверенный пункт приёма.</p>
+                            <div class="review-author">
+                                <div class="review-avatar">Н</div>
+                                <div>
+                                    <div class="review-name">Николай</div>
+                                    <div class="review-date">5 июня 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">Привёз старую технику и кабели. Салех всё подробно объяснил, взвесил и сразу выплатили.</p>
+                            <div class="review-author">
+                                <div class="review-avatar">Э</div>
+                                <div>
+                                    <div class="review-name">Эльчин</div>
+                                    <div class="review-date">3 июня 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">Сдавал медь блеск и кабель. Цена как обещали, взвешивание прозрачное, расчёт моментальный.</p>
+                            <div class="review-author">
+                                <div class="review-avatar">Т</div>
+                                <div>
+                                    <div class="review-name">Тарлан</div>
+                                    <div class="review-date">1 июня 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">Забрали алюминиевые рамы и трубы. Вывоз бесплатный, оплата сразу. Рекомендую этот пункт.</p>
+                            <div class="review-author">
+                                <div class="review-avatar">Н</div>
+                                <div>
+                                    <div class="review-name">Намиг</div>
+                                    <div class="review-date">28 мая 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">Обращался к Салеху — всё быстро и без проблем. Забрали металл, сразу выдали деньги. Обязательно обращусь ещё.</p>
+                            <div class="review-author">
+                                <div class="review-avatar">А</div>
+                                <div>
+                                    <div class="review-name">Артур</div>
+                                    <div class="review-date">25 мая 2026</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-next" id="reviewsNext">→</button>
+            </div>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 data-i18n="contact_title">Свяжитесь с нами</h2>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form>
+                        <input type="text" data-i18n-placeholder="form_name" placeholder="Ваше имя">
+                        <input type="tel" data-i18n-placeholder="form_phone" placeholder="Телефон">
+                        <input type="email" data-i18n-placeholder="form_email" placeholder="Email">
+                        <select>
+                            <option value="" data-i18n="form_select_metal">Выберите тип металла</option>
+                            <option value="copper" data-i18n="metal_copper">Медь</option>
+                            <option value="aluminum" data-i18n="metal_aluminum">Алюминий</option>
+                            <option value="brass" data-i18n="metal_brass">Латунь</option>
+                            <option value="cable" data-i18n="metal_cable">Провода</option>
+                            <option value="steel" data-i18n="metal_steel">Сталь</option>
+                            <option value="other" data-i18n="form_other">Другое</option>
+                        </select>
+                        <textarea data-i18n-placeholder="form_message" placeholder="Опишите ваш металл..."></textarea>
+                        <button type="submit" class="btn btn-primary" data-i18n="btn_send">[Отправить заявку]</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <span>Московская область, г. Видное, Тамбовская ул., д. 85</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <span>+7 926 411-36-86</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">✉️</span>
+                        <span>metal.priyom1@gmail.com</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🕐</span>
+                        <span>Пн-Вс: 10:00 - 22:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <section id="map" class="map-section">
+        <div class="container">
+            <h2 data-i18n="map_title">Как нас найти</h2>
+            <div class="map-wrapper">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2246.0!2d37.695977!3d55.541128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTXCsDMyJzI4LjEiTiAzN8KwNDEnNDUuNSJF!5e0!3m2!1sru!2sru!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">⚙️</span>
+                    <span class="logo-text">МеталлПро</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#home" data-i18n="nav_home">Главная</a>
+                    <a href="#prices" data-i18n="nav_prices">Цены</a>
+                    <a href="#services" data-i18n="nav_services">Услуги</a>
+                    <a href="#about" data-i18n="nav_about">О нас</a>
+                    <a href="#contact" data-i18n="nav_contact">Контакты</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-btn" title="WhatsApp">💬</a>
+                    <a href="#" class="social-btn" title="Telegram">📱</a>
+                    <a href="#" class="social-btn" title="Email">✉️</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer_copy">© 2026 МеталлПро. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL: Get Quote -->
+    <div id="quoteModal" class="modal-overlay">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 data-i18n="modal_title">Оценка металла</h2>
+            <p class="modal-desc" data-i18n="modal_desc">Загрузите фото и опишите ваш металл — мы свяжемся с вами</p>
+
+            <form id="quoteForm" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" value="Новая заявка на оценку металла">
+                <input type="hidden" name="comment" id="hiddenComment">
+
+                <div class="form-row">
+                    <input type="text" name="name" id="quoteName" data-i18n-placeholder="form_name" placeholder="Ваше имя" required>
+                    <input type="tel" name="phone" id="quotePhone" data-i18n-placeholder="form_phone" placeholder="Телефон" required>
+                </div>
+
+                <div class="upload-zone" id="uploadZone">
+                    <input type="file" id="fileInput" name="files" multiple accept="image/*" hidden>
+                    <div class="upload-content">
+                        <span class="upload-icon">📷</span>
+                        <p data-i18n="modal_upload_text">Нажмите или перетащите фото</p>
+                        <p class="upload-hint" data-i18n="modal_upload_hint">JPG, PNG — до 10 файлов</p>
+                    </div>
+                </div>
+
+                <div class="preview-grid" id="previewGrid"></div>
+
+                <textarea id="quoteComment" rows="4" data-i18n-placeholder="modal_comment" placeholder="Комментарий: количество, состояние металла..."></textarea>
+
+                <button type="submit" class="btn btn-primary btn-full" id="submitForm">
+                    <span class="btn-text" data-i18n="modal_send">[Отправить]</span>
+                    <span class="btn-loader" hidden>⏳</span>
+                </button>
+            </form>
+
+            <!-- Success message -->
+            <div id="successMessage" class="success-box" hidden>
+                <div class="success-icon">✅</div>
+                <h3 data-i18n="modal_success_title">Отправлено!</h3>
+                <p data-i18n="modal_success_desc">Мы получили вашу заявку и свяжемся с вами в ближайшее время</p>
+                <button class="btn btn-primary" id="successClose" data-i18n="modal_success_btn">[Закрыть]</button>
+            </div>
+
+            <!-- Messengers row -->
+            <div class="modal-messengers">
+                <p data-i18n="modal_or">Или напишите нам напрямую:</p>
+                <div class="messengers-row">
+                    <a href="#" class="messenger-btn whatsapp" id="modalWhatsApp">💬 WhatsApp</a>
+                    <a href="#" class="messenger-btn telegram" id="modalTelegram">📱 Telegram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: Call -->
+    <div id="callModal" class="modal-overlay">
+        <div class="modal modal-call">
+            <button class="modal-close" id="callModalClose">&times;</button>
+            <div class="call-icon">📞</div>
+            <h2 data-i18n="call_title">Позвоните нам</h2>
+
+            <!-- Working hours -->
+            <div id="callWorkTime">
+                <p class="modal-desc" data-i18n="call_desc">Нажмите на номер чтобы позвонить</p>
+                <a href="tel:+79264113686" class="call-phone" id="callPhoneLink">
+                    <span class="call-phone-number">+7 926 411-36-86</span>
+                    <span class="call-phone-hint" data-i18n="call_hint">Нажмите чтобы позвонить</span>
+                </a>
+                <p class="call-hours" data-i18n="call_hours">Пн-Вс: 10:00 - 22:00</p>
+            </div>
+
+            <!-- Outside working hours -->
+            <div id="callOffTime" hidden>
+                <div class="off-icon">🌙</div>
+                <h3>Закрыто</h3>
+                <p class="modal-desc">Открытие в 10:00</p>
+                <p class="modal-desc">Напишите нам в WhatsApp или Telegram</p>
+                <div class="messengers-row">
+                    <a href="#" class="messenger-btn whatsapp" id="callWhatsApp">💬 WhatsApp</a>
+                    <a href="#" class="messenger-btn telegram" id="callTelegram">📱 Telegram</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FLOATING BUTTONS -->
+    <div class="floating-buttons">
+        <a href="#" class="floating-btn floating-whatsapp" id="floatWhatsApp" title="WhatsApp">💬</a>
+        <a href="#" class="floating-btn floating-telegram" id="floatTelegram" title="Telegram">📱</a>
+    </div>
+
+    <!-- BACK TO TOP -->
+    <button id="backToTop" class="back-to-top" title="Наверх">↑</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
