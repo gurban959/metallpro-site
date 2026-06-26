@@ -105,7 +105,7 @@ const translations = {
         status_closed: 'Закрыто',
 
         // Footer
-        footer_copy: '© 2026 МеталлПро. Все права защищены.'
+        footer_copy: '© 2026 MetalPoint. Все права защищены.'
     },
 
     en: {
@@ -213,7 +213,7 @@ const translations = {
         status_closed: 'Closed',
 
         // Footer
-        footer_copy: '© 2026 MetalPro. All rights reserved.'
+        footer_copy: '© 2026 MetalPoint. All rights reserved.'
     }
 };
 
